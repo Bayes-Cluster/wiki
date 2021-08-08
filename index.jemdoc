@@ -1,0 +1,68 @@
+# jemdoc: menu{MENU}{index.html}
+== BNU-HKBU UIC  -- STAT Bayes Cluster --Wiki
+
+== Introduction
+
+Welcome to the Wiki of STAT high performance computing cluster, UIC-STAT Bayes Cluster (USBC). It provides high performance computing services for both students and teachers in Statistics Programme. Before using the cluster, if you have no experience in computing with clusters, then we strongly recommend that you take a moment to read the contents of this manual. You don’t have to read them all in a short time, but you need to take a closer look at the [quick-start.html \ +Quick Start+] which is a simplified version of the manual.
+
+~~~
+We choose high performance computing cluster for scientific calculation due to following reasons:
+
+- It can free your personal computers from heavy computing tasks. With a cluster, you can run complex programs on it and in the meanwhile you can do other works on your own PC. You can even shut down your PC without affecting the progress of programs on the cluster.
+- It has great advantages in parallel computing. The clusters’ processor is characterized by a large number of cores. Although the computing power of each core is not the strongest, it will provide a high speed-up when working together.
+- It can deepen your understanding of software running environment and thus make you aware of writing more portable programs.
+~~~
+
+== General 
+
+\n
+Phsical Configuration:
+~~~
+{}{table}{Physical Configuration}
+NodeName  | CPU	| Memory  |  GPU  |  Storage ||
+Control | 20 Cores  | 128GB  | NA  | 240GB   ||
+Compute2030005000 | 20 Cores  | 128GB  | NA  | 600GB   ||
+Compute2030005001 | 20 Cores  | 128GB  | NA  | 3.0TB   ||
+Compute2030005002 | 20 Cores  | 128GB  | Tesla P100 12GB  | 4.8TB   ||
+Compute2030005003 | 20 Cores  | 128GB  | Tesla P100 12GB  | 4.8TB   
+~~
+
+\n
+Public Software:
+~~~
+{}{table}{TABLENAME}
+Software Name | Version ||
+Anaconda | 3.5.3.1 ||
+R	 | 4.0.3   ||
+MATLAB	 | R2018a  ||
+GCC	 | 7.3	   ||
+SageMath | 9.2	   ||
+GAP - Groups, Algorithms, Programming \n - a System for Computational Discrte Algebra | 4.11.1 
+~~
+
+== Contact Us
+
+Before using the USBC, all user are recommended to read the [term-of-service.html \ +Term-of-Serivce+]. If you have any problem in using USBC, please contact [ivandeng@uic.edu.cn Dr.Ivan Deng]   or [terencejjliu@uic.edu.cn Mr.Terence Liu].
+
+== Acknoledgement
+
+~~~
+{}{img_left}{photos/uic.png}{BNU-HKBU UIC}
+~~~
+
+~~~
+{}{img_left}{photos/isci.jpg}{ISCI}{300px}{75px}
+~~~
+
+~~~
+{}{img_left}{photos/fpil.jpg}{FPIL}{300px}{75px}
+~~~
+
+~~~
+{}{img_left}{photos/bicmr.png}{BICMR}{300px}{70px}
+~~~
+
+~~~
+{}{img_left}{photos/USBC.png}{USBC}{300px}{150px}
+~~
+

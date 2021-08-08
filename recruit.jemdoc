@@ -1,0 +1,28 @@
+# jemdoc: menu{MENU}{recruit.html}
+== Join us
+
+=== Introduction 
+
+USBC Maintenance Group is started from 2018, which provide technical support for UIC-STAT server cluster. In 2020, it successfully built the first computing cluster USBC, and over 50 researchers and students from department of statistics and data science using this cluster to conduct their reseach and projects.
+
+=== Tech stack
+
+We widely use:
+
+- KVM: Linux open-source visualization platform
+- Tornado: Web Service
+- SLURM: Free and open-source job scheduler for Linux and Unix-like kernels
+- NFS: Distirbuted file system protocol 
+- LDAP: An open, vendor-neutral, industry standard application protocol for accessing and maintaining distributed directory information services over an Internet Protocol (IP) network.
+
+=== Recruitment
+
+If you are interested in:
+- high-performance computing
+- bio-information analysis
+- AI-oriented computing
+- computing platform DevOps
+- cloud platform DevOps
+- storage platform DevOps 
+
+welcome to [terencejjliu@uic.edu.cn \ contact us].

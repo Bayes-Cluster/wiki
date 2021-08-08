@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<title>Install Software in Cluster</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Home</div>
+<div class="menu-item"><a href="index.html">About</a></div>
+<div class="menu-item"><a href="term-of-service.html">Term&nbsp;of&nbsp;Service</a></div>
+<div class="menu-item"><a href="quick-start.html">Quick&nbsp;Start</a></div>
+<div class="menu-item"><a href="login.html">Log&nbsp;In</a></div>
+<div class="menu-item"><a href="interactive-task.html">Interactive&nbsp;Task</a></div>
+<div class="menu-item"><a href="batch-task.html">Batch&nbsp;Task</a></div>
+<div class="menu-item"><a href="installation.html" class="current">Installation</a></div>
+<div class="menu-item"><a href="transferfile.html">File&nbsp;Transfer</a></div>
+<div class="menu-category">Quick Link</div>
+<div class="menu-item"><a href="/portal">Web&nbsp;Portal</a></div>
+<div class="menu-category">Maintenance Group</div>
+<div class="menu-item"><a href="recruit.html">Join&nbsp;us</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Install Software in Cluster</h1>
+</div>
+<p>In default situation, user cannot install software via <tt>root</tt> authority. However, user can install their needed software under their own <tt><i>home</i>user_name</tt> directory. Here are some example:</p>
+<h3>Install Python via Anaconda:</h3>
+<p>Conda can create a virtual python environment, and it easily install packages. This created virtual individual environment can solve the python's version and requirement problem and it is  fully controlled by the user <a href="">you can install packages without root permission</a></p>
+<ol>
+<li><p>Activate <tt>Anaconda</tt> PATH</p>
+</li>
+<li><p>Create an environment with <tt>conda</tt></p>
+</li>
+<li><p>Use <tt>conda</tt> or <tt>pip</tt> to install packages </p>
+</li>
+</ol>
+<div class="codeblock">
+<div class="blocktitle">Create Python Environment with Conda</div>
+<div class="blockcontent"><pre>
+
+# activate anaconda PATH
+source ~/environment/anaconda-5.3.1
+# using conda
+proxychains4 conda create -name=DeepLearning python=3.7
+# use Beigjing Foreign Studies Univerisy's  Mirrors (https://mirrors.bfsu.edu.cn)
+proxychains4 python -m pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
+## run program
+python main.py
+</pre></div></div>
+<div class="infoblock">
+<div class="blockcontent">
+<p>Remember to use <tt>proxychains4</tt> to do the download or run the programme which needs internet connection.</p>
+</div></div>
+<h3>Install R via Anaconda:</h3>
+<p>Conda can create a virtual python environment, and it easily install packages. This created virtual individual environment can solve the python's version and requirement problem and it is  fully controlled by the user <a href="">you can install packages without root permission</a></p>
+<ol>
+<li><p>Activate <tt>Anaconda</tt> environment</p>
+</li>
+<li><p>Create an environment with <tt>conda</tt></p>
+</li>
+</ol>
+<div class="codeblock">
+<div class="blocktitle">Create Python Environment with Conda</div>
+<div class="blockcontent"><pre>
+# activate anaconda PATH
+source ~/environment/anaconda-5.3.1
+# using conda
+proxychains4 conda create -name=r_env r-essentials r-base
+## run program
+R
+</pre></div></div>
+<p>You may use <a href="https://mirrors.bfsu.edu.cn"> BFSU Mirrors</a> to accelerate R package installation:</p>
+<div class="codeblock">
+<div class="blocktitle">use BFSU CRAN mirrors</div>
+<div class="blockcontent"><pre>
+# add this command to your  ~/.Rprofile
+options("repos" = c(CRAN="https://mirrors.bfsu.edu.cn/CRAN/"))
+# or, install pakcages with this options
+install.packages("{package_name}", repos="https://mirrors.bfsu.edu.cn/CRAN/")
+</pre></div></div>
+<h3>Install Julia via Anaconda:</h3>
+<ol>
+<li><p>Activate <tt>Anaconda</tt> PATH</p>
+</li>
+<li><p>Create an environment with <tt>conda</tt></p>
+</li>
+</ol>
+<div class="codeblock">
+<div class="blocktitle">Create Python Environment with Conda</div>
+<div class="blockcontent"><pre>
+
+# activate anaconda PATH
+source ~/environment/anaconda-5.3.1
+# using conda
+proxychains4 conda create -name=julia_env julia
+</pre></div></div>
+<p>You may use <a href="https://mirrors.bfsu.edu.cn"> BFSU Mirrors</a> to accelerate R package installation:</p>
+<div class="codeblock">
+<div class="blocktitle">use BFSU CRAN mirrors</div>
+<div class="blockcontent"><pre>
+# add this command to your  ~/.bashrc
+export JULIA_PKG_SERVER=https://mirrors.bfsu.edu.cn/julia
+# or, install use JuliaZH (package) to change mirrors
+add JuliaZH # install `JuliaZU`
+using JuliaZH # when using, it will automatically switch to the China's mirrors
+JuliaZH.set_mirror("BFSU") # You can also mannually switch to BFSU mirror
+JuliaZH.mirrors # Query the upstream information
+</pre></div></div>
+<h3>Install packages wihout sudo privileges</h3>
+<p>User withou sudo priviledges need to compile the package from source, for example:</p>
+<div class="codeblock">
+<div class="blocktitle">install from source</div>
+<div class="blockcontent"><pre>
+apt-get source PACKAGE
+./configure --prefix=$HOME/{package-PATH}
+make
+make install
+</pre></div></div>
+<div id="footer">
+<div id="footer-text">
+Page generated 2021-08-08 14:15:25 CST, by USBC Maintenance Group
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,27 @@
+# jemdoc: menu{MENU}{transferfile.html}
+== Transfer Files Between Local and Cluster
+
+=== Use SCP
+
+You can easily used the pre-installed tool: scp inside your terminal, this tools depends on SSH, therefore, you need to type your password every time.
+
+~~~
+{scp}{shell}
+scp file_name user_name@ip_address:  # first command
+scp file_name user_name@ip_address:Documents/ # second command
+~~~
+
+- The first command is trying to send the file_name to the cluster's home category; 
+- If you want the file sened to a specific PATH, for exmaple +Documents+ you need to follow the second command
+
+=== SFTP
+
+It is easy for you to use sftp and put commands for remote copying a local file or folder to the Cluster. For instance, if you write a "Hello world" program saved as +D:\File\hello.m+  locally then you need to upload it to the Cluster, or if you want to upload a folder +D:\File\hello+ including a number of source code files to the Cluster, you can use following commands,
+
+~~~
+{sftp}{shell}
+sftp uer_name@ip_address  # step one: log in 
+put  D:\File\hello.m      # upload a file to the server 
+put -r D:\File\hello      # upload a folder to the server
+~~~
+Enter your password before the copying, then the file or folder will be uploaded to the HOME directory in the Cluster.

@@ -1,0 +1,198 @@
+# jemdoc: menu{MENU}{quick-start.html}
+== Quick Start
+
+After reading the introduction of USBC, you may have interest in running your first program on it.
+Steps are as follows:
+Apply for an account.
+Log in the Cluster (set up [https://itsc.uic.edu.cn \ campus VPN service connection] if you are off-campus).
+Upload your program source code.
+Prepare a SLURM script to run your program.
+Submit your program running task to the Cluster.
+
+== Apply for an Account
+
+Only authorized users (Staffs or students in Statistics Department of UIC) are allowed to log in the Cluster. You need to apply for an account by filling in this form:
+
+~~~
+{}{raw}
+<iframe width="1000" height="600" src="https://shimo.im/forms/JcWGhwvdGVvHtpRd/fill" frameborder="0" allowfullscreen></iframe>
+~~~
+
+== Runtime
+
+In order to optimize computing resources on the Cluster, the default storage for each account is limited to 50GB. The submitted computing tasks will also be queued to be processed by specified compute nodes, and the max running time for each task is limited as follows,
+
+~~~
+{RUNTIME}{table}{RUNTIME}
+Compute Node  | Max Runtime For Each Task ||
+CPU-Compute-1 | 24 Hours   ||
+CPU-Compute-2 | 7 Days     ||
+CPU-Compute-1 | 7 Days     ||
+CPU-Compute-2 | Unlimited  ||
+~~~
+
+== Log in the Cluster
+
+The cluster can only be accessed from UIC campus by an authorized user. If you are off-campus, you need to use UIC VPN service to connect the cluster. With your user ID and initial password provided by the administrator via email, you can easily log in the cluster.
+
+=== For Linux and Mac users
+
+After obtaining your user ID and initial password from an email of the administrator, for Linux and Mac user you can directly open the terminal and use +ssh+ command to login.
+	
+~~
+{SSH}{shell}
+$ ssh user_name@ip_addr
+~~~
+
+Change the +user_name+ and +ip_addr+ to the parameters admins provided to you.
+
+After the successful connection, the cluster will prompt you to enter the password, please enter the initial password at this time. Nothing happens when you enter the password, but the password is already entered.
+
+After the first login, the system will force you to set a new password, please follow the prompts. The connection is automatically disconnected after the change is successful. Just log in again with the new password.
+
+==== For Linux Beginners
+
+The operation system in the cluster is Linux (Ubuntu 18.04 LTS). This document assumes that the user has a certain Linux foundation. Users who are not familiar with the basic operations of Linux (such as viewing files, editing text, copying data, etc.) can spend some time being familiar with these operations. This document will not explain Linux operations separately except for special needs.
+
+=== For Windows users
+
+Since the operations on the cluster are mostly based on Linux, if the same or similar operations can be used under Windows, it will bring great convenience to users. For Windows user you can log in the cluster via an Secure Socket Shell (SSH) client such as PuTTY/Mobaxterm. SSH is a UNIX-based command interface and protocol for securely getting access to a remote computer. PuTTy and Mobaxterm are free SSH clients compatible with windows under Windows 10 and provide complete SSH functions.
+
+. [http://mirror.bit.edu.cn/putty/0.73/htmldoc/ \ Tutorial of PuTTY]
+. [https://mobaxterm.mobatek.net/documentation.html \ Tutorial of Mobaxterm]
+. [https://www.cnblogs.com/weiwang/p/5219431.html \ 利用PuTTY远程ssh登录服务器]
+. [https://zhuanlan.zhihu.com/p/56341917 \ 全能终端神器—MobaXterm]
+
+== Upload Your Program Source Code
+
+After successfully logging in, you need to use commend lines to communicate with the Cluster and you can test your first program on it. But before that, you need to get your program source code file ready on the Cluster.
+
+It is easy for you to use [https://www.ssh.com/academy/ssh/sftp \ +sftp+] and put commands for remote copying a local file or folder to the Cluster. For instance, if you write a "Hello world" program saved as +D:\File\hello.m+  locally then you need to upload it to the Cluster, or if you want to upload a folder +D:\File\hello+ including a number of source code files to the Cluster, you can use following commands,
+
+~~~
+{SFTP}{shell}
+$ sftp uer_name@ip_address  # step one: log in 
+$ put  D:\File\hello.m      # upload a file to the server 
+$ put -r D:\File\hello      # upload a folder to the server
+~~~
+
+Enter your password before copying, then the file or folder will be uploaded to the HOME directory in the Cluster.
+
+== Prepare a SLURM Script to Run Your Program
+
+The Cluster employs a resource management system [https://slurm.schedmd.com/documentation.html \ SLURM] to receive and allocate computing tasks to compute notes, so you also need to prepare a SLURM script to run your program on the Cluster. Steps of creating the script are as follows,
+
+Create an empty file named +run.slurm+ and make it executable, then you can use command vim to edit the file.
+
+~~~
+{use +VIM+}{shell}
+$ touch run.slurm         # new file 
+$ chmod u+x run.slurm     # authorized the file 
+$ sudo vim run.slurm      # vim is a editor, you can use others
+~~~
+
+After entering the empty file, you can start to write the script and press + Shift\+ZZ + when you finish editing. Here is an example:
+
+~~~
+{SLURM Script}{shell}
+#!/bin/bash
+#SBATCH -J test                      # the task name is: test
+#SBATCH -p CPU-Compute-1             # submit the task to `Cpu-Compute-1` partition
+#SBATCH -N 1                         # use one node
+#SBATCH --cpus-per-task=1            # every task uses cpu core
+#SBATCH -t 5:00                      # Maximum runtime is 5 mins
+#SBATCH -o test.out                  # Save the screen's output to test.out in the current folder
+
+source environment/MATLAB            ## activate the environment variable
+
+$matlab -nodesktop -nosplash -nodisplay -r "file_name, but without `.m`"                  
+                                     ## run the `.m` program
+~~~
+
+The first line of the above script, which specifies the script\' s interpreter as bash. You must write this line every time when you write a script. After that, several lines beginning with \# indicate the detailed settings of your SLURM job task: the task name is "test", and it is submitted to the Cpu-Compute-1 partition, applies for 1 core of 1 node, limits the maximum task running time to five minutes, and finally saves standard output and error in the file test.out in current folder. The command source helps you to activate software's environment variables so that you can use proper software to run your program. In the above example Matlab is activated, and you can also activate Anaconda or CUDA through the following commands:
+
+~~~
+{Activate Environment}{shell}
+source environment/anaconda-5.3.1 # activate the Anaconda 
+source environment/CUDA			# activate the CUDA 
+~~~
+
+== Submit Your Program Running Task
+
+Before submitting your task to the Cluster, it is better for you to use command +sinfo+ to double check the compute node you specified in your script is available.
+
+~~~
+{sinfo output}{shell}
+PARTITION      AVAIL  TIMELIMIT  NODES  STATE NODELIST
+CPU-Compute-1*    up 1-00:00:00      1   idle Compute2030005000
+CPU-Compute-2     up 7-00:00:00      1   idle Compute2030005001
+GPU-Compute-1     up 7-00:00:00      1   idle Compute2030005002
+GPU-Compute-2     up   infinite      1   idle Compute2030005003
+~~~
+
+From the output we know that the current Cpu_Compute-1 Partition is idle and tasks can be submitted. If the compute node you specified in your script is not available you can revise your script. Now you can use command +sbatch+ to submit your SLURM script.
+
+~~~
+{upload task via sbatch}{shell}
+sbatch run.slurm
+~~~
+
+If the Cluster has free resources, your program will be run on it, and you just need to wait for the program to finish. Command +squeue+ can list information of current running tasks, and with the output information you can double check if your program running task is successfully submitted and run on the Cluster.
+
+== Check Your Program Output
+
+When your program is finished, you can find the output of the program in the file you specified in the SLURM script. By default, the system copies standard output files and standard error files to the directory where +sbatch+ is called. The default file name is +slurm-<JOBID>.out+, where JOBID is the job number. If the +-o+ option is used in the SLURM script, these files are copied to the directory specified by the user.
+
+The output file mentioned here only contains what is printed on the screen when the program is run, that is, the standard output stream and the standard error stream. Other outputs of the program such as +.mat+ files stored by MATLAB and image outputs by Python require users to manually save these outputs. If they are not manually saved, they will be lost.
+
+You can also use command +get+ from sftp to download your output files to your local PC.
+
+~~~
+{sftp: get}{shell}
+$ sftp user_name@ip_addr
+$ get slurm-<JOBID>.out    # get a file from the cluster
+$ get -r /PATH/FolderName  # get a folder from the cluster
+~~~
+
+To check the output of the job (when it is still runing), you can use the command +speek+ (just in control node):
+
+~~~
+{speek}{shell}
+# speek [-e] [-f] jobid
+# -e: show error log.
+# -f: output appended data as the file grows.
+speek -f [JOBID] # the output will be monitored continuously
+speek -e [JOBID] # the error log will be monitored continuously
+~~~
+Acknowledgement: This script is written by [http://hmli.ustc.edu.cn/intro.html  \ Dr.Li] from USTC
+
+To check to usage of GPU, you can use the command +gpu-usage+ (just in control node):
+
+~~~
+{gpu-usage}{shell}
+# gpu-usage [-n] [-h] [-p]
+    [-n]    (optional) specify nodes, either comma separated list, or summarised.
+          Mirrors slurm command -n usage in sinfo, and -w usage for squeue."
+    [-h]    (optional) do not print header
+    [-p]    (optional) make output pretty, ignores -h if specified
+~~~
+
+== Web Portal
+
+Started from 2021, we provide a new option for the user who has little prior knowledge of the terminal interface, we provide a web-based system, where the user can intuitively access the system can do the coding, check files, and even submit, check and stop their SLURM jobs.
+
+. Go to [/portal \ HSBC Web Portal] (with UIC intranet or using UIC VPN)
+. Log in with your account and password
+. You can choose the web-based VS Code as your coding frontend and HPC-Tool to check the cluster 
+
+~~~
+{}{img_left}{photos/web-portal.png}{1000px}{800px}
+~~~
+
+
+== Video Tutorial
+
+~~~
+{}{raw}
+<iframe width="50%" height="500px" src="//player.bilibili.com/player.html?aid=80681065&bvid=BV1ZJ411W71E&cid=138078132&page=1" scrolling="no" border="0" frameborder="no" framespacing="10" allowfullscreen="true"> </iframe>
+~~~

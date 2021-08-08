@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<title>Batch Task</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Home</div>
+<div class="menu-item"><a href="index.html">About</a></div>
+<div class="menu-item"><a href="term-of-service.html">Term&nbsp;of&nbsp;Service</a></div>
+<div class="menu-item"><a href="quick-start.html">Quick&nbsp;Start</a></div>
+<div class="menu-item"><a href="login.html">Log&nbsp;In</a></div>
+<div class="menu-item"><a href="interactive-task.html">Interactive&nbsp;Task</a></div>
+<div class="menu-item"><a href="batch-task.html" class="current">Batch&nbsp;Task</a></div>
+<div class="menu-item"><a href="installation.html">Installation</a></div>
+<div class="menu-item"><a href="transferfile.html">File&nbsp;Transfer</a></div>
+<div class="menu-category">Quick Link</div>
+<div class="menu-item"><a href="/portal">Web&nbsp;Portal</a></div>
+<div class="menu-category">Maintenance Group</div>
+<div class="menu-item"><a href="recruit.html">Join&nbsp;us</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Batch Task</h1>
+</div>
+<p>To submit a batch task on the cluster, it requires a SLURM script to clarify the requested resources and the programs to run.</p>
+<h3>Check Available Resource</h3>
+<p>Before the submission, please check the compute nodes&rsquo; status to insure it<i>they has</i>have enough resource to run the upcoming jobs.</p>
+<div class="codeblock">
+<div class="blocktitle">resource</div>
+<div class="blockcontent"><pre>
+user_name@Control:~$ sinfo
+PARTITION      AVAIL  TIMELIMIT  NODES  STATE NODELIST
+CPU-Compute-1*    up 1-00:00:00      1   idle Compute2030005000
+CPU-Compute-2     up 7-00:00:00      1   idle Compute2030005001
+GPU-Compute-1     up 7-00:00:00      1    mix Compute2030005002
+GPU-Compute-2     up   infinite      1  alloc Compute2030005003
+</pre></div></div>
+<p>As the example shown, <tt>sinfo</tt> can roughly shows the information of all the partitions. </p>
+<ul>
+<li><p>If the STATE column is &ldquo;idle&rdquo;, it means the node is in an idle state</p>
+</li>
+<li><p>If the STATE column is &ldquo;alloc&rdquo;, it means the node is full</p>
+</li>
+<li><p>If the STATE column is &ldquo;mix&rdquo;, it means that the node is occupied by someone, but it still has remaining resources</p>
+</li>
+</ul>
+<p>You can also use the <tt>pestat</tt> to chekc hte detail of each node:</p>
+<div class="codeblock">
+<div class="blocktitle">resource with pestat</div>
+<div class="blockcontent"><pre>
+user_name@Control:~$ pestat
+Hostname       Partition     Node Num_CPU  CPUload  Memsize  Freemem  Joblist
+                            State Use/Tot              (MB)     (MB)  JobId User ...
+Compute2030005000  CPU-Compute-1*     idle   0  40    1.11*   128000    35643
+Compute2030005001   CPU-Compute-2     idle   0  40    0.11    128000    34578
+Compute2030005002   GPU-Compute-1      mix   2  40   16.30    128000    37085	 1422 user_2
+Compute2030005003   GPU-Compute-2    alloc  40  40   35.50*   128000    29748  1454 user_1
+</pre></div></div>
+<h3>Check Task's Status</h3>
+<p>After the submission, you can use <tt>squeue</tt> to check the status of your task:</p>
+<div class="codeblock">
+<div class="blocktitle">task status</div>
+<div class="blockcontent"><pre>
+user_name@Control:~$ squeue
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              1454 GPU-Compu 		 test   user_1  R 22-17:04:56      1 Compute2030005003
+              1422 GPU-Compu 		debug   user_2  R       01:30      1 Compute2030005002
+</pre></div></div>
+<ul>
+<li><p><tt>squeue -l</tt>: can show detailed information </p>
+</li>
+<li><p><tt>squeue -u user_name</tt>: only show user_name's task</p>
+</li>
+<li><p><tt>squeue -t state</tt>: only shows the task with &ldquo;state&rdquo; status</p>
+</li>
+</ul>
+<p>To cancel task:</p>
+<ul>
+<li><p><tt>scancel jobid</tt>: cancel the task with JobID = jobid</p>
+</li>
+<li><p><tt>scancel -u user_name</tt>: cancel all the tasks belong to user_name</p>
+</li>
+<li><p><tt>scancel -s state</tt>: Delete all the tasks with &ldquo;state&rdquo; status</p>
+</li>
+</ul>
+<p>User can only cancel its only task, not others!</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2021-08-08 14:15:25 CST, by USBC Maintenance Group
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,80 @@
+# jemdoc: menu{MENU}{interactive-task.html}
+== Interactive Tasks
+
+=== Submit interactive tasks
+
+An interactive task is a special queue task. In this mode, users can log in to a computing node directly, and all operations are performed on this node. This function is mainly convenient for users to debug the program on the server so that they can see the output of the program in real time.
+
+We need to use the  +salloc+ command to allocate the resources needed for interactive tasks. Its syntax is:
+
+~~~
+{salloc}{shell}
+$ salloc [Apply for resources]
+~~~
+
+An the user may specify the requested resource in the form of options, which are basically the same as those in the SLURM script. Common options are:
+
+~~~
+{args of salloc}{shell}
+-N <Number of nodes>
+--cpus-per-task=<Number of single-process CPU cores>
+--gres=gpu:<Number of single-node GPU>
+-t <Maximum running time>
+-p <The partition to be used>
+--qos=<QoS to be used>
+~~~
+
+For example, you can apply for resources in the following ways:
+
+~~~
+{salloc example}{shell}
+user_name@Control:~$ salloc -N 1 --cpus-per-task=4 -t 5:00 -p CPU-Compute-2
+salloc: Granted job allocation 411
+user_name@Control:~$
+~~~
+
+After successful execution, SLURM will give you a new shell. Note that the node where the user is located is still the master node at this time. You need to manually switch to the compute node using the +slink+ command.
+
+~~~
+{ssh to Compute Node}{shell}
+user_name@Control:~$ salloc -N 1 --cpus-per-task=4 -t 5:00 -p CPU-Compute-2
+salloc: Granted job allocation 2294
+salloc: Waiting for resource configuration
+salloc: Nodes Compute2030005001 are ready for job
+use_name@Control:~slink
+user_name@Compute2030005001:~$
+~~~
+
+As shown above, after executing +salloc+, SLURM automatically allocates the job number and informs which node is available. After successfully obtaining resources and login via the ssh, you get a new shell (Line 5). At this time, the user can directly switch to the target node comput1 to perform the computing task.
+
+After the interactive calculation is completed, use exit to exit the node, and then execute +exit+ to exit the shell allocated by SLURM to end this interactive task. SLURM will inform you that the resources of the interactive task have been released.
+
+~~~
+{Release Compute Node}{shell}
+user_name@Compute2030005001:~$ exit                 # This step is to exit CPU-compute-1
+exit
+Connection to compute2030005003 closed.
+user_name@Control:~$ exit
+exit
+salloc: Relinquishing job allocation 2294 # Resources are also released when exiting
+user_name@Control:~$
+~~~
+
+Users will return to Control node.
+
+~~~
+Remember: Users are not allowed to login to compute nodes unless they have a job running there.
+If you SSH to a compute node without any active job allocation, you will be greeted by the following message:
+~~~
+
+~~~
+{ssh without task}{shell}
+user_name@Control:~$ ssh Compute2030005001
+Access denied: user user_name(uid=xxx) has no active jobs on this node.
+Connection closed by Compute2030005001 port 22
+
+~~~
+
+Tips
+
+If the requested maximum runtime is exceeded while performing an interactive task, SLURM will forcefully reclaim the resources that have been requested after a timeout of 30 seconds.

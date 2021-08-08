@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<title>Quick Start</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Home</div>
+<div class="menu-item"><a href="index.html">About</a></div>
+<div class="menu-item"><a href="term-of-service.html">Term&nbsp;of&nbsp;Service</a></div>
+<div class="menu-item"><a href="quick-start.html" class="current">Quick&nbsp;Start</a></div>
+<div class="menu-item"><a href="login.html">Log&nbsp;In</a></div>
+<div class="menu-item"><a href="interactive-task.html">Interactive&nbsp;Task</a></div>
+<div class="menu-item"><a href="batch-task.html">Batch&nbsp;Task</a></div>
+<div class="menu-item"><a href="installation.html">Installation</a></div>
+<div class="menu-item"><a href="transferfile.html">File&nbsp;Transfer</a></div>
+<div class="menu-category">Quick Link</div>
+<div class="menu-item"><a href="/portal">Web&nbsp;Portal</a></div>
+<div class="menu-category">Maintenance Group</div>
+<div class="menu-item"><a href="recruit.html">Join&nbsp;us</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Quick Start</h1>
+</div>
+<p>After reading the introduction of USBC, you may have interest in running your first program on it.
+Steps are as follows:
+Apply for an account.
+Log in the Cluster (set up <a href="https://itsc.uic.edu.cn"> campus VPN service connection</a> if you are off-campus).
+Upload your program source code.
+Prepare a SLURM script to run your program.
+Submit your program running task to the Cluster.</p>
+<h2>Apply for an Account</h2>
+<p>Only authorized users (Staffs or students in Statistics Department of UIC) are allowed to log in the Cluster. You need to apply for an account by filling in this form:</p>
+<iframe width="1000" height="600" src="https://shimo.im/forms/JcWGhwvdGVvHtpRd/fill" frameborder="0" allowfullscreen></iframe>
+<h2>Runtime</h2>
+<p>In order to optimize computing resources on the Cluster, the default storage for each account is limited to 50GB. The submitted computing tasks will also be queued to be processed by specified compute nodes, and the max running time for each task is limited as follows,</p>
+<table id="RUNTIME">
+<tr class="r1"><td class="c1">Compute Node  </td><td class="c2"> Max Runtime For Each Task </td></tr>
+<tr class="r2"><td class="c1">CPU-Compute-1 </td><td class="c2"> 24 Hours   </td></tr>
+<tr class="r3"><td class="c1">CPU-Compute-2 </td><td class="c2"> 7 Days     </td></tr>
+<tr class="r4"><td class="c1">CPU-Compute-1 </td><td class="c2"> 7 Days     </td></tr>
+<tr class="r5"><td class="c1">CPU-Compute-2 </td><td class="c2"> Unlimited  </td></tr>
+<tr class="r6"><td class="c1">
+</td></tr></table>
+<h2>Log in the Cluster</h2>
+<p>The cluster can only be accessed from UIC campus by an authorized user. If you are off-campus, you need to use UIC VPN service to connect the cluster. With your user ID and initial password provided by the administrator via email, you can easily log in the cluster.</p>
+<h3>For Linux and Mac users</h3>
+<p>After obtaining your user ID and initial password from an email of the administrator, for Linux and Mac user you can directly open the terminal and use <tt>ssh</tt> command to login.</p>
+<div class="codeblock">
+<div class="blocktitle">SSH</div>
+<div class="blockcontent"><pre>
+$ ssh user_name@ip_addr
+</pre></div></div>
+<p>Change the <tt>user_name</tt> and <tt>ip_addr</tt> to the parameters admins provided to you.</p>
+<p>After the successful connection, the cluster will prompt you to enter the password, please enter the initial password at this time. Nothing happens when you enter the password, but the password is already entered.</p>
+<p>After the first login, the system will force you to set a new password, please follow the prompts. The connection is automatically disconnected after the change is successful. Just log in again with the new password.</p>
+<h4>For Linux Beginners</h4>
+<p>The operation system in the cluster is Linux (Ubuntu 18.04 LTS). This document assumes that the user has a certain Linux foundation. Users who are not familiar with the basic operations of Linux (such as viewing files, editing text, copying data, etc.) can spend some time being familiar with these operations. This document will not explain Linux operations separately except for special needs.</p>
+<h3>For Windows users</h3>
+<p>Since the operations on the cluster are mostly based on Linux, if the same or similar operations can be used under Windows, it will bring great convenience to users. For Windows user you can log in the cluster via an Secure Socket Shell (SSH) client such as PuTTY/Mobaxterm. SSH is a UNIX-based command interface and protocol for securely getting access to a remote computer. PuTTy and Mobaxterm are free SSH clients compatible with windows under Windows 10 and provide complete SSH functions.</p>
+<ol>
+<li><p><a href="http://mirror.bit.edu.cn/putty/0.73/htmldoc/"> Tutorial of PuTTY</a></p>
+</li>
+<li><p><a href="https://mobaxterm.mobatek.net/documentation.html"> Tutorial of Mobaxterm</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/weiwang/p/5219431.html"> 利用PuTTY远程ssh登录服务器</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/56341917"> 全能终端神器—MobaXterm</a></p>
+</li>
+</ol>
+<h2>Upload Your Program Source Code</h2>
+<p>After successfully logging in, you need to use commend lines to communicate with the Cluster and you can test your first program on it. But before that, you need to get your program source code file ready on the Cluster.</p>
+<p>It is easy for you to use <a href="https://www.ssh.com/academy/ssh/sftp"> <tt>sftp</tt></a> and put commands for remote copying a local file or folder to the Cluster. For instance, if you write a &ldquo;Hello world&rdquo; program saved as <tt>D:Filehello.m</tt>  locally then you need to upload it to the Cluster, or if you want to upload a folder <tt>D:Filehello</tt> including a number of source code files to the Cluster, you can use following commands,</p>
+<div class="codeblock">
+<div class="blocktitle">SFTP</div>
+<div class="blockcontent"><pre>
+$ sftp uer_name@ip_address  # step one: log in
+$ put  D:\File\hello.m      # upload a file to the server
+$ put -r D:\File\hello      # upload a folder to the server
+</pre></div></div>
+<p>Enter your password before copying, then the file or folder will be uploaded to the HOME directory in the Cluster.</p>
+<h2>Prepare a SLURM Script to Run Your Program</h2>
+<p>The Cluster employs a resource management system <a href="https://slurm.schedmd.com/documentation.html"> SLURM</a> to receive and allocate computing tasks to compute notes, so you also need to prepare a SLURM script to run your program on the Cluster. Steps of creating the script are as follows,</p>
+<p>Create an empty file named <tt>run.slurm</tt> and make it executable, then you can use command vim to edit the file.</p>
+<div class="codeblock">
+<div class="blocktitle">use <tt>VIM</tt></div>
+<div class="blockcontent"><pre>
+$ touch run.slurm         # new file
+$ chmod u+x run.slurm     # authorized the file
+$ sudo vim run.slurm      # vim is a editor, you can use others
+</pre></div></div>
+<p>After entering the empty file, you can start to write the script and press <tt> Shift+ZZ </tt> when you finish editing. Here is an example:</p>
+<div class="codeblock">
+<div class="blocktitle">SLURM Script</div>
+<div class="blockcontent"><pre>
+#!/bin/bash
+#SBATCH -J test                      # the task name is: test
+#SBATCH -p CPU-Compute-1             # submit the task to `Cpu-Compute-1` partition
+#SBATCH -N 1                         # use one node
+#SBATCH --cpus-per-task=1            # every task uses cpu core
+#SBATCH -t 5:00                      # Maximum runtime is 5 mins
+#SBATCH -o test.out                  # Save the screen's output to test.out in the current folder
+
+source environment/MATLAB            ## activate the environment variable
+
+$matlab -nodesktop -nosplash -nodisplay -r "file_name, but without `.m`"
+                                     ## run the `.m` program
+</pre></div></div>
+<p>The first line of the above script, which specifies the script' s interpreter as bash. You must write this line every time when you write a script. After that, several lines beginning with # indicate the detailed settings of your SLURM job task: the task name is &ldquo;test&rdquo;, and it is submitted to the Cpu-Compute-1 partition, applies for 1 core of 1 node, limits the maximum task running time to five minutes, and finally saves standard output and error in the file test.out in current folder. The command source helps you to activate software's environment variables so that you can use proper software to run your program. In the above example Matlab is activated, and you can also activate Anaconda or CUDA through the following commands:</p>
+<div class="codeblock">
+<div class="blocktitle">Activate Environment</div>
+<div class="blockcontent"><pre>
+source environment/anaconda-5.3.1 # activate the Anaconda
+source environment/CUDA			# activate the CUDA
+</pre></div></div>
+<h2>Submit Your Program Running Task</h2>
+<p>Before submitting your task to the Cluster, it is better for you to use command <tt>sinfo</tt> to double check the compute node you specified in your script is available.</p>
+<div class="codeblock">
+<div class="blocktitle">sinfo output</div>
+<div class="blockcontent"><pre>
+PARTITION      AVAIL  TIMELIMIT  NODES  STATE NODELIST
+CPU-Compute-1*    up 1-00:00:00      1   idle Compute2030005000
+CPU-Compute-2     up 7-00:00:00      1   idle Compute2030005001
+GPU-Compute-1     up 7-00:00:00      1   idle Compute2030005002
+GPU-Compute-2     up   infinite      1   idle Compute2030005003
+</pre></div></div>
+<p>From the output we know that the current Cpu_Compute-1 Partition is idle and tasks can be submitted. If the compute node you specified in your script is not available you can revise your script. Now you can use command <tt>sbatch</tt> to submit your SLURM script.</p>
+<div class="codeblock">
+<div class="blocktitle">upload task via sbatch</div>
+<div class="blockcontent"><pre>
+sbatch run.slurm
+</pre></div></div>
+<p>If the Cluster has free resources, your program will be run on it, and you just need to wait for the program to finish. Command <tt>squeue</tt> can list information of current running tasks, and with the output information you can double check if your program running task is successfully submitted and run on the Cluster.</p>
+<h2>Check Your Program Output</h2>
+<p>When your program is finished, you can find the output of the program in the file you specified in the SLURM script. By default, the system copies standard output files and standard error files to the directory where <tt>sbatch</tt> is called. The default file name is <tt>slurm-&lt;JOBID&gt;.out</tt>, where JOBID is the job number. If the <tt>-o</tt> option is used in the SLURM script, these files are copied to the directory specified by the user.</p>
+<p>The output file mentioned here only contains what is printed on the screen when the program is run, that is, the standard output stream and the standard error stream. Other outputs of the program such as <tt>.mat</tt> files stored by MATLAB and image outputs by Python require users to manually save these outputs. If they are not manually saved, they will be lost.</p>
+<p>You can also use command <tt>get</tt> from sftp to download your output files to your local PC.</p>
+<div class="codeblock">
+<div class="blocktitle">sftp: get</div>
+<div class="blockcontent"><pre>
+$ sftp user_name@ip_addr
+$ get slurm-&lt;JOBID&gt;.out    # get a file from the cluster
+$ get -r /PATH/FolderName  # get a folder from the cluster
+</pre></div></div>
+<p>To check the output of the job (when it is still runing), you can use the command <tt>speek</tt> (just in control node):</p>
+<div class="codeblock">
+<div class="blocktitle">speek</div>
+<div class="blockcontent"><pre>
+# speek [-e] [-f] jobid
+# -e: show error log.
+# -f: output appended data as the file grows.
+speek -f [JOBID] # the output will be monitored continuously
+speek -e [JOBID] # the error log will be monitored continuously
+</pre></div></div>
+<p>Acknowledgement: This script is written by <a href="http://hmli.ustc.edu.cn/intro.html"> Dr.Li</a> from USTC</p>
+<p>To check to usage of GPU, you can use the command <tt>gpu-usage</tt> (just in control node):</p>
+<div class="codeblock">
+<div class="blocktitle">gpu-usage</div>
+<div class="blockcontent"><pre>
+# gpu-usage [-n] [-h] [-p]
+    [-n]    (optional) specify nodes, either comma separated list, or summarised.
+          Mirrors slurm command -n usage in sinfo, and -w usage for squeue."
+    [-h]    (optional) do not print header
+    [-p]    (optional) make output pretty, ignores -h if specified
+</pre></div></div>
+<h2>Web Portal</h2>
+<p>Started from 2021, we provide a new option for the user who has little prior knowledge of the terminal interface, we provide a web-based system, where the user can intuitively access the system can do the coding, check files, and even submit, check and stop their SLURM jobs.</p>
+<ol>
+<li><p>Go to <a href="/portal"> HSBC Web Portal</a> (with UIC intranet or using UIC VPN)</p>
+</li>
+<li><p>Log in with your account and password</p>
+</li>
+<li><p>You can choose the web-based VS Code as your coding frontend and HPC-Tool to check the cluster </p>
+</li>
+</ol>
+<table class="imgtable"><tr><td>
+<img src="photos/web-portal.png" alt="1000px" width="800px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<h2>Video Tutorial</h2>
+<iframe width="50%" height="500px" src="//player.bilibili.com/player.html?aid=80681065&bvid=BV1ZJ411W71E&cid=138078132&page=1" scrolling="no" border="0" frameborder="no" framespacing="10" allowfullscreen="true"> </iframe>
+<div id="footer">
+<div id="footer-text">
+Page generated 2021-08-08 14:15:25 CST, by USBC Maintenance Group
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

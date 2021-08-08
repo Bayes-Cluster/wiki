@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<title>Log In</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Home</div>
+<div class="menu-item"><a href="index.html">About</a></div>
+<div class="menu-item"><a href="term-of-service.html">Term&nbsp;of&nbsp;Service</a></div>
+<div class="menu-item"><a href="quick-start.html">Quick&nbsp;Start</a></div>
+<div class="menu-item"><a href="login.html" class="current">Log&nbsp;In</a></div>
+<div class="menu-item"><a href="interactive-task.html">Interactive&nbsp;Task</a></div>
+<div class="menu-item"><a href="batch-task.html">Batch&nbsp;Task</a></div>
+<div class="menu-item"><a href="installation.html">Installation</a></div>
+<div class="menu-item"><a href="transferfile.html">File&nbsp;Transfer</a></div>
+<div class="menu-category">Quick Link</div>
+<div class="menu-item"><a href="/portal">Web&nbsp;Portal</a></div>
+<div class="menu-category">Maintenance Group</div>
+<div class="menu-item"><a href="recruit.html">Join&nbsp;us</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Log In</h1>
+<div id="subtitle">Using Linux / macOS</div>
+</div>
+<p>The users who are using this two operating system, we recommand you to login to the server via <tt>Terminal</tt></p>
+<ul>
+<li><p>For Linux user: <tt>CTRL + ALT + T </tt></p>
+</li>
+<li><p>For macOS user: LaunchPad -&gt; Type &lsquo;Terminal&rsquo;</p>
+</li>
+</ul>
+<div class="codeblock">
+<div class="blocktitle">SSH</div>
+<div class="blockcontent"><pre>
+$ ssh user_name@hpc.uicstat.com
+$ ssh -X user_name@hpc.uicstat.com
+</pre></div></div>
+<p><tt>user_name</tt> is your ID; <tt>-X</tt> is using the X11 server Forwarding, and -X is for those user want to use GUI, if you do not need the GUI, please ignore it.</p>
+<p>Input your password, <tt>ATTENTION</tt>, no characters(password) are displayed in the terminal. If you can see this:</p>
+<div class="codeblock">
+<div class="blocktitle">SSH output</div>
+<div class="blockcontent"><pre>
+terencelau@Terences-MacBook-Pro:  ssh -X username@ip_address
+username@ip_address's password:
+#     ___          ___          ___          ___#
+#    /  /\        /  /\        /  /\        /  /\#
+#   /  /:/       /  /::\      /  /::\      /  /::\#
+#  /  /:/       /__/:/\:\    /  /:/\:\    /  /:/\:\#
+# /  /:/       _\_ \:\ \:\  /  /::\ \:\  /  /:/  \:\#
+#/__/:/     /\/__/\ \:\ \:\/__/:/\:\_\:|/__/:/ \  \:\#
+#\  \:\    /:/\  \:\ \:\_\/\  \:\ \:\/:/\  \:\  \__\/#
+# \  \:\  /:/  \  \:\_\:\   \  \:\_\::/  \  \:\#
+#  \  \:\/:/    \  \:\/:/    \  \:\/:/    \  \:\#
+#   \  \::/      \  \::/      \__\::/      \  \:\#
+#    \__\/        \__\/           ~~        \__\/#
+
+
+ * Documentation:  https://www.yuque.com/usbc/usbc-wiki/
+ * Support Maintenance: * ivandeng@uic.edu.cn
+                        * terencejjliu@uic.edu.cn
+
+Date and time             = Mon Feb 15 18:03:32 CST 2021
+Hostname                  = Control
+Global IP Addresses       =
+Uptime                    = 18:03:32 up 122 days
+Load avg.                 = 0.14, 0.07, 0.01
+Release                   = Ubuntu 20.04.5 LTS
+Kernel                    = 5.4.0-48-generic GNU/Linux
+Last login: Fri Jan 10 15:05:30 2020 from XXX.XXX.XXX.XXX
+</pre></div></div>
+<p>After successfully logging in, the path is your personal Home folder, and the absolute path is <tt>/Storage2030005000/home/user_name</tt>. You can access and modify all the contents of the personal folder.</p>
+<ul>
+<li><p>When you want to log out of the workstation, execute the following command exit or just press <tt>CTRL+D</tt>. </p>
+</li>
+</ul>
+<ul>
+<li><p>If you log in for the first time, the system will force you to change the password. Be sure to set a more complicated password, and then log in again after the modification.</p>
+</li>
+</ul>
+<ul>
+<li><p>If you want to change the password again, use the following command passwd. Similarly, no characters are displayed in the terminal input area when you are changing your password.</p>
+</li>
+</ul>
+<h3>For Windows User</h3>
+<p>Since the operations on the cluster are mostly based on Linux, if the same or similar operations can be used under Windows, it will bring great convenience to users. We provide several ways for you to use the cluster under Windows as follows:
+Access to the cluster via an Secure Socket Shell (SSH) client such as PuTTY. SSH is a UNIX-based command interface and protocol for securely getting access to a remote computer. PuTTy is a free SSH client and provides complete SSH functions. It is also compatible with windows under Windows 10.
+Access to the cluster via Windows Subsystem Linux (WSL). WSL is a feature of new version of Windows 10, which allows users to run subsystems such as Ubuntu or OpenSUSE in command line mode under Windows systems. Users using WSL can directly follow the instructions for Linux user to access to the cluster. Please refer to the Microsoft installation WSL <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10"> tutorial</a> to install WSL and please pay attention to your version of Windows during installation. Disadvantage of this way is the inconvenience with  graphical interface configuration, so it is highly recommended for users who do not have much need for a graphical interface.
+Access to the cluster via virtual machine installing Linux. Virtual machines are software computers that provide the same functionality as physical computers. Like physical computers, they run applications and an operating system. If you do not want to newly install Linux on your PC, you can choose to install Linux on a virtual machine created by software such as <a href="https://docs.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v"> Hyper-V</a> and <a href="https://my.vmware.com/cn/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/15_0"> VMWare</a>. There are many tutorials about virtual machines on the Internet, which are not listed here. After proper configuration of virtual machine, users can directly follow the instructions for Linux user to access to the cluster. Disadvantage of this way is the occupation of system resources on your PC when the virtual machine is fully running.</p>
+<h3>Set Two-Factor Authentication (2FA)</h3>
+<p>Simply using a password to verify the security factor is not enough, because anyone who knows your password can use it to log in to your account. The role of 2FA is to allow the user to authorize access to his account if he needs to complete two verification methods at the same time. Similar is MFA (multi-step verification. Although more authentication methods will increase security, it will also bring tedious login process, which will affect the user experience.</p>
+<p>The server has enabled the  2FA, login using account password + one-time verification code. The following is the configuration method.</p>
+<h4>Download an App</h4>
+<p>The UIC VPN is also need a token to login, you can use the app (ndkey 宁顿令牌) to be your 2FA client validator.</p>
+<h4>Server Account Configuration</h4>
+<p>The server uses the <tt>google-authenticator</tt> module to implement 2FA for SSH. Configure server 2FA to use commands:</p>
+<div class="codeblock">
+<div class="blocktitle">2FA</div>
+<div class="blockcontent"><pre>
+google-authenticator
+</pre></div></div>
+<p>This command will generate a secret key under the server account. During the generation process, you will be asked a series of questions. It is recommended to read it carefully. Personally, I recommend all of them you can just input y. After the first question, a command line window displays a QR code. At this point, take out your phone to open ndkey, select &ldquo;Add Account&rdquo; or just press &ldquo;+&rdquo; and scan the code. After successfully scanning the code, you can see that ndkey will continue to generate six-digit verification codes, and each verification code will expire after 30s.</p>
+<h4>Test</h4>
+<p>After the configration, you can just open a new windows for a test:</p>
+<div class="codeblock">
+<div class="blocktitle">login with 2FA</div>
+<div class="blockcontent"><pre>
+$ ssh user_name@hpc.uicstat.com
+$ Password:                   # &lt;&lt; input your original password
+$ Verification code:          # &lt;&lt; input your validation code on your phone
+</pre></div></div>
+<p>A few notes</p>
+<ul>
+<li><p>After the server account is generated and configured, the secret key will be stored in the .google_authenticator file under HOME. If you want to close 2FA, delete this file. You can also back up this file to your local.</p>
+</li>
+<li><p>No internet connection is required to use 2FA. The 2FA code is generated based on the time, as long as the server time and the phone time are consistent.</p>
+</li>
+<li><p>If the user logs in via SSH key for authentication instead of password authentication, 2FA is not required (regardless of whether the server is configured). This setting is based on the assumption that the local private key is trusted.</p>
+</li>
+</ul>
+<h3>Web Portal</h3>
+<p><a href="https://hpc.uicstat.com:8443/hub/login"> Code-Hub</a> is a intergradted web application for USBC cluster, which allows user to upload, modify and delete files; submit, check, hold, kill SLURM jobs as well, which decreate the dependence of prior knowledge in LINUX and HPC.</p>
+<table class="imgtable"><tr><td>
+<img src="photos/web-portal.png" alt="1000px" width="800px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<h4>JupyterHub</h4>
+<p><a href="https://github.com/jupyterhub/jupyterhub"> Jupyterhub</a> provides a multi-user hub for spawning, managing, and proxying multiple instances of single-user Jupyter notebook servers. At USBC, you authenticate to the JupyterHub instance we manage using your USBC credentials.</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2021-08-08 14:15:25 CST, by USBC Maintenance Group
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
