@@ -112,3 +112,10 @@ A few notes
 
 [https://github.com/jupyterhub/jupyterhub \ Jupyterhub] provides a multi-user hub for spawning, managing, and proxying multiple instances of single-user Jupyter notebook servers. At USBC, you authenticate to the JupyterHub instance we manage using your USBC credentials.
 
+===== Server Option
+
+After the user login to the system, we have provide multiple options with different configuration for user to choose:
+
+- Control Node: user can use the intergradte extension, e.g. web-based VS Code, SLURM extension and etc.
+- CPU Node: user can use the Compute Node with a basic +python+ environment and +R+ environment 
+- GPU Node: user can use the GPU Node with public conda environment
