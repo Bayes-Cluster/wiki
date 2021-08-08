@@ -123,3 +123,9 @@ After the user login to the system, we have provide multiple options with differ
 ~~~
 {}{img_left}{photos/spawn.jpeg}{1000px}{800px}
 ~~~
+
+To stop the server, go to the upper-left corner and choose +File+, choose +Hub Control Panel+ and click +Stop My Server+
+
+~~~
+{}{img_left}{photos/stop_server.png}{1000px}{800px}
+~~~
