@@ -16,7 +16,7 @@ scp file_name user_name@ip_address:Documents/ # second command
 
 === SFTP
 
-It is easy for you to use sftp and put commands for remote copying a local file or folder to the Cluster. For instance, if you write a "Hello world" program saved as +D:\File\hello.m+  locally then you need to upload it to the Cluster, or if you want to upload a folder +D:\File\hello+ including a number of source code files to the Cluster, you can use following commands,
+It is easy for you to use sftp and put commands for remote copying a local file or folder to the Cluster. For instance, if you write a "Hello world" program saved as +D:\\File\\hello.m+  locally then you need to upload it to the Cluster, or if you want to upload a folder +D:\\File\\hello+ including a number of source code files to the Cluster, you can use following commands,
 
 ~~~
 {sftp}{shell}
