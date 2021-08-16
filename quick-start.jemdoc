@@ -78,6 +78,10 @@ $ put -r D:\File\hello      # upload a folder to the server
 
 Enter your password before copying, then the file or folder will be uploaded to the HOME directory in the Cluster.
 
+~~~
+Every user have two default folders: +environment/+ and +user_name/+. Please use the +user_name/+ folder to store your data, codes and etc.. As the default home path has very limited storage (10MB) and the +user_name/+ has 50GB. If you need external storage, please connect the maintainer.
+~~~ 
+
 == Prepare a SLURM Script to Run Your Program
 
 The Cluster employs a resource management system [https://slurm.schedmd.com/documentation.html \ SLURM] to receive and allocate computing tasks to compute notes, so you also need to prepare a SLURM script to run your program on the Cluster. Steps of creating the script are as follows,
