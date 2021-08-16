@@ -63,6 +63,13 @@ Since the operations on the cluster are mostly based on Linux, if the same or si
 . [https://www.cnblogs.com/weiwang/p/5219431.html \ 利用PuTTY远程ssh登录服务器]
 . [https://zhuanlan.zhihu.com/p/56341917 \ 全能终端神器—MobaXterm]
 
+== Before using it
+
+~~~
+Every user have two default folders: +environment\/+ and +user_name\/+. Please use the +user_name\/+ folder to store your data, codes and etc.. As the default home path has very limited storage (10MB) and the +user_name/+ has 50GB. If you need external storage, please connect the maintainer.
+~~
+
+
 == Upload Your Program Source Code
 
 After successfully logging in, you need to use commend lines to communicate with the Cluster and you can test your first program on it. But before that, you need to get your program source code file ready on the Cluster.
@@ -77,10 +84,6 @@ $ put -r D:\File\hello      # upload a folder to the server
 ~~~
 
 Enter your password before copying, then the file or folder will be uploaded to the HOME directory in the Cluster.
-
-~~~
-Every user have two default folders: +environment/+ and +user_name/+. Please use the +user_name/+ folder to store your data, codes and etc.. As the default home path has very limited storage (10MB) and the +user_name/+ has 50GB. If you need external storage, please connect the maintainer.
-~~~ 
 
 == Prepare a SLURM Script to Run Your Program
 

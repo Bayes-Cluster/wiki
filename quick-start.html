@@ -76,6 +76,11 @@ $ ssh user_name@ip_addr
 <li><p><a href="https://zhuanlan.zhihu.com/p/56341917"> 全能终端神器—MobaXterm</a></p>
 </li>
 </ol>
+<h2>Before using it</h2>
+<div class="infoblock">
+<div class="blockcontent">
+<p>Every user have two default folders: <tt>environment/</tt> and <tt>user_name/</tt>. Please use the <tt>user_name/</tt> folder to store your data, codes and etc.. As the default home path has very limited storage (10MB) and the <tt>user_name/</tt> has 50GB. If you need external storage, please connect the maintainer.</p>
+</div></div>
 <h2>Upload Your Program Source Code</h2>
 <p>After successfully logging in, you need to use commend lines to communicate with the Cluster and you can test your first program on it. But before that, you need to get your program source code file ready on the Cluster.</p>
 <p>It is easy for you to use <a href="https://www.ssh.com/academy/ssh/sftp"> <tt>sftp</tt></a> and put commands for remote copying a local file or folder to the Cluster. For instance, if you write a &ldquo;Hello world&rdquo; program saved as <tt>D:Filehello.m</tt>  locally then you need to upload it to the Cluster, or if you want to upload a folder <tt>D:Filehello</tt> including a number of source code files to the Cluster, you can use following commands,</p>
@@ -87,10 +92,6 @@ $ put  D:\File\hello.m      # upload a file to the server
 $ put -r D:\File\hello      # upload a folder to the server
 </pre></div></div>
 <p>Enter your password before copying, then the file or folder will be uploaded to the HOME directory in the Cluster.</p>
-<div class="infoblock">
-<div class="blockcontent">
-<p>Every user have two default folders: <tt>environment<i></tt> and <tt>user_name</i></tt>. Please use the <tt>user_name<i></tt> folder to store your data, codes and etc.. As the default home path has very limited storage (10MB) and the <tt>user_name</i></tt> has 50GB. If you need external storage, please connect the maintainer.</p>
-</div></div>
 <h2>Prepare a SLURM Script to Run Your Program</h2>
 <p>The Cluster employs a resource management system <a href="https://slurm.schedmd.com/documentation.html"> SLURM</a> to receive and allocate computing tasks to compute notes, so you also need to prepare a SLURM script to run your program on the Cluster. Steps of creating the script are as follows,</p>
 <p>Create an empty file named <tt>run.slurm</tt> and make it executable, then you can use command vim to edit the file.</p>
@@ -192,7 +193,7 @@ speek -e [JOBID] # the error log will be monitored continuously
 <iframe width="50%" height="500px" src="//player.bilibili.com/player.html?aid=80681065&bvid=BV1ZJ411W71E&cid=138078132&page=1" scrolling="no" border="0" frameborder="no" framespacing="10" allowfullscreen="true"> </iframe>
 <div id="footer">
 <div id="footer-text">
-Page generated 2021-08-16 15:51:35 CST, by USBC Maintenance Group
+Page generated 2021-08-16 15:53:11 CST, by USBC Maintenance Group
 </div>
 </div>
 </td>
