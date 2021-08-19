@@ -78,6 +78,13 @@ conda install -c conda-forge r-base #or conda install -c conda-forge/label/gcc7 
 ## run program
 R
 </pre></div></div>
+<p><tt>Tips:</tt> sometimes we may use <tt>devtools::install_github()</tt> to install R pacakge directly from GitHub, however, the connection between the school intranet and GitHub server is not robust enough. Here is a solution:</p>
+<div class="infoblock">
+<div class="blocktitle">install package via the github proxy</div>
+<div class="blockcontent">
+<p>remotes::install_git(&ldquo;https:<i></i>github.com.cnpmjs.org<i>GuangchuangYu</i>nCov2019&rdquo;)
+devtools::install_git(&ldquo;https:<i></i>github.com.cnpmjs.org<i>GuangchuangYu</i>nCov2019&rdquo;)</p>
+</div></div>
 <p>You may use <a href="https://mirrors.bfsu.edu.cn"> BFSU Mirrors</a> to accelerate R package installation:</p>
 <div class="codeblock">
 <div class="blocktitle">use BFSU CRAN mirrors</div>
@@ -127,7 +134,7 @@ make install
 </pre></div></div>
 <div id="footer">
 <div id="footer-text">
-Page generated 2021-08-19 11:22:36 CST, by USBC Maintenance Group
+Page generated 2021-08-19 11:33:25 CST, by USBC Maintenance Group
 </div>
 </div>
 </td>

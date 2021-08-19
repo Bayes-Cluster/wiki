@@ -48,6 +48,19 @@ conda install -c conda-forge r-base #or conda install -c conda-forge/label/gcc7 
 R
 ~~~
 
++Tips:+ sometimes we may use +devtools::install_github()+ to install R pacakge directly from GitHub, however, the connection between the school intranet and GitHub server is not robust enough. Here is a solution:
+
+~~~
+{install package via the github proxy}
+# for example, we want to download the 'GuangchuangYu/nCov2019'
+# instead of using devtools::install_github("GuangchuangYu/nCov2019")
+# we can try devtools::install_git and remotes::install_git
+remotes::install_git("https://github.com.cnpmjs.org/GuangchuangYu/nCov2019") # or
+devtools::install_git("https://github.com.cnpmjs.org/GuangchuangYu/nCov2019")
+~~~
+~~~
+
+
 You may use [https://mirrors.bfsu.edu.cn \ BFSU Mirrors] to accelerate R package installation:
 
 ~~~
