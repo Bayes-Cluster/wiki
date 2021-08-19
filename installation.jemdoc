@@ -12,7 +12,7 @@ Conda can create a virtual python environment, and it easily install packages. T
 . Use +conda+ or +pip+ to install packages 
 
 ~~~
-{Create Python Environment with Conda}{shell}
+{Create local Python Environment with Conda}{shell}
 
 # activate anaconda PATH
 source ~/environment/anaconda-5.3.1
@@ -37,7 +37,7 @@ Conda can create a virtual python environment, and it easily install packages. T
 . Create an environment with +conda+
 
 ~~~
-{Create Python Environment with Conda}{shell}
+{Create local R Environment with Conda}{shell}
 # activate anaconda PATH
 source ~/environment/anaconda-5.3.1
 # using conda
@@ -64,7 +64,7 @@ install.packages("{package_name}", repos="https://mirrors.bfsu.edu.cn/CRAN/")
 . Create an environment with +conda+
 
 ~~~
-{Create Python Environment with Conda}{shell}
+{Create local Julia Environment with Conda}{shell}
 
 # activate anaconda PATH
 source ~/environment/anaconda-5.3.1
