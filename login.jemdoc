@@ -102,7 +102,7 @@ A few notes
 
 === Web Portal
 
-[https://hpc.uicstat.com:8443/hub/login \ Code-Hub] is a intergradted web application for USBC cluster, which allows user to upload, modify and delete files; submit, check, hold, kill SLURM jobs as well, which decreate the dependence of prior knowledge in LINUX and HPC.
+[https://hpc.uicstat.com:8443/hub/login \ Code-Hub] is a intergradted web application for USBC cluster, which allows user to upload, modify and delete files; submit, check, hold, kill SLURM jobs as well, which decrease the dependence of prior knowledge in LINUX and HPC.
 
 ~~~
 {}{img_left}{photos/web-portal.png}{1000px}{800px}
