@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<title>Web Portal</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Home</div>
+<div class="menu-item"><a href="index.html">About</a></div>
+<div class="menu-item"><a href="term-of-service.html">Term&nbsp;of&nbsp;Service</a></div>
+<div class="menu-item"><a href="quick-start.html">Quick&nbsp;Start</a></div>
+<div class="menu-item"><a href="login.html">Log&nbsp;In</a></div>
+<div class="menu-item"><a href="web-portal.html" class="current">Web&nbsp;Portal</a></div>
+<div class="menu-item"><a href="interactive-task.html">Interactive&nbsp;Task</a></div>
+<div class="menu-item"><a href="batch-task.html">Batch&nbsp;Task</a></div>
+<div class="menu-item"><a href="installation.html">Installation</a></div>
+<div class="menu-item"><a href="transferfile.html">File&nbsp;Transfer</a></div>
+<div class="menu-category">Quick Link</div>
+<div class="menu-item"><a href="https://hpc.uicstat.com:8443/">Code-Hub</a></div>
+<div class="menu-category">Maintenance Group</div>
+<div class="menu-item"><a href="recruit.html">Join&nbsp;us</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Web Portal</h1>
+</div>
+<p><a href="https://hpc.uicstat.com:8443/hub/login"> Code-Hub</a> is a intergradted web application for USBC cluster, which allows user to upload, modify and delete files; submit, check, hold, kill SLURM jobs as well, which decreate the dependence of prior knowledge in LINUX and HPC.</p>
+<table class="imgtable"><tr><td>
+<img src="photos/web-portal.png" alt="1000px" width="800px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<h4>JupyterHub</h4>
+<p><a href="https://github.com/jupyterhub/jupyterhub"> Jupyterhub</a> provides a multi-user hub for spawning, managing, and proxying multiple instances of single-user Jupyter notebook servers. At USBC, you authenticate to the JupyterHub instance we manage using your USBC credentials.</p>
+<h5>Server Option</h5>
+<p>After the user login to the system, we have provide multiple options with different configuration for user to choose:</p>
+<ul>
+<li><p>Control Node: user can use the intergradte extension, e.g. web-based VS Code, SLURM extension and etc.</p>
+</li>
+<li><p>CPU Node: user can use the Compute Node with a basic <tt>python</tt> environment and <tt>R</tt> environment</p>
+</li>
+<li><p>GPU Node: user can use the GPU Node with public conda environment(pytorch 1.9.0, Tensorflow-GPU 2.5.0)</p>
+</li>
+</ul>
+<table class="imgtable"><tr><td>
+<img src="photos/spawn.jpeg" alt="1000px" width="800px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<p>This service is based on the <tt>batchspawner</tt>, where it provide start servers in batch scheduled systems.</p>
+<h4>Stop the Spawner</h4>
+<p>To stop the server, go to the upper-left corner and choose <tt>File</tt>, choose <tt>Hub Control Panel</tt> and click <tt>Stop My Server</tt></p>
+<table class="imgtable"><tr><td>
+<img src="photos/stop_server.png" alt="1000px" width="800px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<div id="footer">
+<div id="footer-text">
+Page generated 2021-08-26 22:59:30 CST, by USBC Maintenance Group
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
