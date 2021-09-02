@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-<title>Transfer Files Between Local and Cluster</title>
+<title>Some Examples</title>
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
@@ -20,9 +20,9 @@
 <div class="menu-item"><a href="web-portal.html">Web&nbsp;Portal</a></div>
 <div class="menu-item"><a href="interactive-task.html">Interactive&nbsp;Task</a></div>
 <div class="menu-item"><a href="batch-task.html">Batch&nbsp;Task</a></div>
-<div class="menu-item"><a href="example.html">Job&nbsp;Example</a></div>
+<div class="menu-item"><a href="example.html" class="current">Job&nbsp;Example</a></div>
 <div class="menu-item"><a href="installation.html">Installation</a></div>
-<div class="menu-item"><a href="transferfile.html" class="current">File&nbsp;Transfer</a></div>
+<div class="menu-item"><a href="transferfile.html">File&nbsp;Transfer</a></div>
 <div class="menu-category">Quick Link</div>
 <div class="menu-item"><a href="https://hpc.uicstat.com:8443/">Code-Hub</a></div>
 <div class="menu-category">Maintenance Group</div>
@@ -30,32 +30,41 @@
 </td>
 <td id="layout-content">
 <div id="toptitle">
-<h1>Transfer Files Between Local and Cluster</h1>
+<h1>Some Examples</h1>
 </div>
-<h3>Use SCP</h3>
-<p>You can easily used the pre-installed tool: scp inside your terminal, this tools depends on SSH, therefore, you need to type your password every time.</p>
+<p>In this page, we provide some script examples to illustrate how to submit a job. User can customize the script with these examples.</p>
+<h3>For MATLAB user</h3>
+<p>For now, MATLAB is no supported via the web portal, thus, user can only submit their MATLAB jobs via the terminal.Here is an example:</p>
 <div class="codeblock">
-<div class="blocktitle">scp</div>
+<div class="blocktitle">MATLAB job script</div>
 <div class="blockcontent"><pre>
-scp file_name user_name@ip_address:  # first command
-scp file_name user_name@ip_address:Documents/ # second command
+#!/bin/bash
+#SBATCH -J test               # The job's name is test
+#SBATCH -N 1                  # allocate 1 node
+#SBATCH --cpus-per-task=4     # allocate 4 个 cpu cores
+
+source /Storage2030005000/home/user_name/environment/MATLAB-2018a # activate the MATLAB-2018a/MATLAB-2020b PATH
+
+# use MATLAB to run the "Test.m" file
+matlab -nodesktop -nosplash -nodisplay -r "Test"
 </pre></div></div>
-<ul>
-<li><p>The first command is trying to send the file_name to the cluster's home category; </p>
-</li>
-<li><p>If you want the file sened to a specific PATH, for exmaple <tt>Documents</tt> you need to follow the second command</p>
-</li>
-</ul>
-<h3>SFTP</h3>
-<p>It is easy for you to use sftp and put commands for remote copying a local file or folder to the Cluster. For instance, if you write a &ldquo;Hello world&rdquo; program saved as <tt>D:\File\hello.m</tt>  locally then you need to upload it to the Cluster, or if you want to upload a folder <tt>D:\File\hello</tt> including a number of source code files to the Cluster, you can use following commands,</p>
+<p><tt>matlab -nodesktop -nosplash -nodisplay</tt> means disable the MATLAB GUI and welcome page, <tt>-r</tt> means excecute the MATLAB command. The file name is &ldquo;Test.m&rdquo;, however, in the script, we need to remove the &ldquo;.m&rdquo;</p>
+<h2>For GPU user</h2>
 <div class="codeblock">
-<div class="blocktitle">sftp</div>
+<div class="blocktitle">GPU job script</div>
 <div class="blockcontent"><pre>
-sftp uer_name@ip_address  # step one: log in
-put  D:\File\hello.m      # upload a file to the server
-put -r D:\File\hello      # upload a folder to the server
+#!/bin/bash
+#SBATCH -J gpu-job            # The job's name gpu-job
+#SBATCH --cpus-per-task=8     # allocate 8 个 cpu cores
+#SBATCH -p gpu                # submit the job to gpu partition
+#SBATCH --gres=gpu:1          # allocate 1 graphic card
+#SBATCH -t 1-00:00:00         # runtime: 1 day
+
+source /Storage2030005000/home/user_name/environment/CUDA           # activate CUDA PATH
+source /Storage2030005000/home/user_name/environment/anaconda-5.3.1 # activate anaconda PATH
+
+python gpu_task.py            # 运行 python 程序
 </pre></div></div>
-<p>Enter your password before the copying, then the file or folder will be uploaded to the HOME directory in the Cluster.</p>
 <div id="footer">
 <div id="footer-text">
 Page generated 2021-09-02 11:05:29 CST, by USBC Maintenance Group
