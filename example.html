@@ -41,12 +41,14 @@
 #!/bin/bash
 #SBATCH -J test               # The job's name is test
 #SBATCH -N 1                  # allocate 1 node
-#SBATCH --cpus-per-task=4     # allocate 4 个 cpu cores
+#SBATCH -p CPU-Compute-1      # submit the job to cpu partition
+#SBATCH --cpus-per-task=4     # allocate 4 cpu cores
+#SBATCH -t 1-00:00:00         # runtime: 1 day
 
-source /Storage2030005000/home/user_name/environment/MATLAB-2018a # activate the MATLAB-2018a/MATLAB-2020b PATH
+source /Storage2030005000/home/user_name/environment/MATLAB-R2018a # activate the MATLAB-R2018a/MATLAB-R2020b PATH
 
 # use MATLAB to run the "Test.m" file
-matlab -nodesktop -nosplash -nodisplay -r "Test"
+$matlab -nodesktop -nosplash -nodisplay -r "Test"
 </pre></div></div>
 <p><tt>matlab -nodesktop -nosplash -nodisplay</tt> means disable the MATLAB GUI and welcome page, <tt>-r</tt> means excecute the MATLAB command. The file name is &ldquo;Test.m&rdquo;, however, in the script, we need to remove the &ldquo;.m&rdquo;</p>
 <h2>For GPU user</h2>
@@ -55,8 +57,8 @@ matlab -nodesktop -nosplash -nodisplay -r "Test"
 <div class="blockcontent"><pre>
 #!/bin/bash
 #SBATCH -J gpu-job            # The job's name gpu-job
-#SBATCH --cpus-per-task=8     # allocate 8 个 cpu cores
-#SBATCH -p gpu                # submit the job to gpu partition
+#SBATCH --cpus-per-task=8     # allocate 8 cpu cores
+#SBATCH -p GPU-Compute-1      # submit the job to gpu partition
 #SBATCH --gres=gpu:1          # allocate 1 graphic card
 #SBATCH -t 1-00:00:00         # runtime: 1 day
 
@@ -67,7 +69,7 @@ python gpu_task.py            # 运行 python 程序
 </pre></div></div>
 <div id="footer">
 <div id="footer-text">
-Page generated 2021-09-08 15:32:46 CST, by USBC Maintenance Group
+Page generated 2021-09-09 12:47:06 CST, by USBC Maintenance Group
 </div>
 </div>
 </td>
