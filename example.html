@@ -51,6 +51,7 @@ source /Storage2030005000/home/user_name/environment/MATLAB-R2018a # activate th
 $matlab -nodesktop -nosplash -nodisplay -r "Test"
 </pre></div></div>
 <p><tt>matlab -nodesktop -nosplash -nodisplay</tt> means disable the MATLAB GUI and welcome page, <tt>-r</tt> means excecute the MATLAB command. The file name is &ldquo;Test.m&rdquo;, however, in the script, we need to remove the &ldquo;.m&rdquo;</p>
+<p><tt>Noticed by our user that CPU Node 1 (Compute2030005000) CANNOT run the MATLAB code with symbolic variables, please submit your task to other nodes</tt></p>
 <h2>For GPU user</h2>
 <div class="codeblock">
 <div class="blocktitle">GPU job script</div>
@@ -64,8 +65,9 @@ $matlab -nodesktop -nosplash -nodisplay -r "Test"
 
 source /Storage2030005000/home/user_name/environment/CUDA           # activate CUDA PATH
 source /Storage2030005000/home/user_name/environment/anaconda-5.3.1 # activate anaconda PATH
+source activate DeepLearning # activate the conda environment called DeepLearning
 
-python gpu_task.py            # 运行 python 程序
+python gpu_task.py            # run the python script
 </pre></div></div>
 <h2>For R user</h2>
 <p>It is easy for run the <tt>R</tt> script with SLURM, here is an example, assumes that we want to run <tt>job.R</tt>, with conda-based R environment:</p>
@@ -86,7 +88,7 @@ Rscript --vanilla job.R
 </pre></div></div>
 <div id="footer">
 <div id="footer-text">
-Page generated 2021-09-09 12:58:08 CST, by USBC Maintenance Group
+Page generated 2021-10-07 19:49:44 CST, by USBC Maintenance Group
 </div>
 </div>
 </td>

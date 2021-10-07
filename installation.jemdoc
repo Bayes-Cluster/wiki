@@ -16,8 +16,13 @@ Conda can create a virtual python environment, and it easily install packages. T
 
 # activate anaconda PATH
 source ~/environment/anaconda-5.3.1
+
 # using conda 
 proxychains4 conda create -name=DeepLearning python=3.7
+
+# activate DeepLearning environment via conda
+source activate DeepLearning (or conda activate DeepLearning)
+
 # use Beigjing Foreign Studies Univerisy's  Mirrors (https://mirrors.bfsu.edu.cn)
 proxychains4 python -m pip config set global.index-url https://mirrors.bfsu.edu.cn/pypi/web/simple
 ## run program
