@@ -115,3 +115,13 @@ apt-get source PACKAGE
 make
 make install
 ~~~
+
+=== Anaconda mirrors
+
+You can use these mirrors in case the BFSU's is down:
+
+- [https://mirrors.bfsu.edu.cn/ Tsinghua (tuna) Open Source Mirrors]
+- [https://mirrors.sustech.edu.cn/ SUSTech Open Source Mirrors]
+- [https://mirror.bjtu.edu.cn/ BJTU free and open source software mirror]
+
+Please follow their instructions and modify your configuration.
