@@ -47,7 +47,7 @@ Conda can create a virtual python environment, and it easily install packages. T
 source ~/environment/anaconda-5.3.1
 # using conda
 proxychains4 conda create -n=r4-base
-conda activate r4-base
+source activate r4-base
 proxychains4 conda install -c conda-forge r-base #or proxychains4 conda install -c conda-forge/label/gcc7 r-base
 # or proxychains4 conda install r-base
 ## run program
