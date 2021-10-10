@@ -48,7 +48,8 @@ source ~/environment/anaconda-5.3.1
 # using conda
 proxychains4 conda create -n=r4-base
 conda activate r4-base
-conda install -c conda-forge r-base #or conda install -c conda-forge/label/gcc7 r-base
+proxychains4 conda install -c conda-forge r-base #or proxychains4 conda install -c conda-forge/label/gcc7 r-base
+# or proxychains4 conda install r-base
 ## run program
 R
 ~~~
