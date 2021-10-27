@@ -89,7 +89,7 @@ Enter your password before copying, then the file or folder will be uploaded to 
 
 The Cluster employs a resource management system [https://slurm.schedmd.com/documentation.html \ SLURM] to receive and allocate computing tasks to compute notes, so you also need to prepare a SLURM script to run your program on the Cluster. Steps of creating the script are as follows,
 
-Create an empty file named +run.slurm+ and make it executable, then you can use command vim to edit the file.
+Create an empty file named +run.slurm+ and make it executable, then you can use command +vim+ to edit the file.
 
 ~~~
 {use +VIM+}{shell}
@@ -97,6 +97,8 @@ $ touch run.slurm         # new file
 $ chmod u+x run.slurm     # authorized the file 
 $ vim run.slurm      # vim is a editor, you can use others
 ~~~
+
+You can check [https://vimhelp.org/ \ VIM-HELP] to learn the basic usage of +VIM+.
 
 After entering the empty file, you can start to write the script and press + Shift\+ZZ + when you finish editing. Here is an example:
 

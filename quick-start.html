@@ -96,7 +96,7 @@ $ put -r D:\File\hello      # upload a folder to the server
 <p>Enter your password before copying, then the file or folder will be uploaded to the HOME directory in the Cluster.</p>
 <h2>Prepare a SLURM Script to Run Your Program</h2>
 <p>The Cluster employs a resource management system <a href="https://slurm.schedmd.com/documentation.html"> SLURM</a> to receive and allocate computing tasks to compute notes, so you also need to prepare a SLURM script to run your program on the Cluster. Steps of creating the script are as follows,</p>
-<p>Create an empty file named <tt>run.slurm</tt> and make it executable, then you can use command vim to edit the file.</p>
+<p>Create an empty file named <tt>run.slurm</tt> and make it executable, then you can use command <tt>vim</tt> to edit the file.</p>
 <div class="codeblock">
 <div class="blocktitle">use <tt>VIM</tt></div>
 <div class="blockcontent"><pre>
@@ -104,6 +104,7 @@ $ touch run.slurm         # new file
 $ chmod u+x run.slurm     # authorized the file
 $ vim run.slurm      # vim is a editor, you can use others
 </pre></div></div>
+<p>You can check <a href="https://vimhelp.org/"> VIM-HELP</a> to learn the basic usage of <tt>VIM</tt>.</p>
 <p>After entering the empty file, you can start to write the script and press <tt> Shift+ZZ </tt> when you finish editing. Here is an example:</p>
 <div class="codeblock">
 <div class="blocktitle">SLURM Script</div>
@@ -195,7 +196,7 @@ speek -e [JOBID] # the error log will be monitored continuously
 <iframe width="50%" height="500px" src="//player.bilibili.com/player.html?aid=80681065&bvid=BV1ZJ411W71E&cid=138078132&page=1" scrolling="no" border="0" frameborder="no" framespacing="10" allowfullscreen="true"> </iframe>
 <div id="footer">
 <div id="footer-text">
-Page generated 2021-10-27 09:21:58 CST, by USBC Maintenance Group
+Page generated 2021-10-27 09:24:15 CST, by USBC Maintenance Group
 </div>
 </div>
 </td>
