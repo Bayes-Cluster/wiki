@@ -95,7 +95,7 @@ Create an empty file named +run.slurm+ and make it executable, then you can use 
 {use +VIM+}{shell}
 $ touch run.slurm         # new file 
 $ chmod u+x run.slurm     # authorized the file 
-$ sudo vim run.slurm      # vim is a editor, you can use others
+$ vim run.slurm      # vim is a editor, you can use others
 ~~~
 
 After entering the empty file, you can start to write the script and press + Shift\+ZZ + when you finish editing. Here is an example:
