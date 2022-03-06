@@ -26,7 +26,7 @@
 <div class="menu-category">Quick Link</div>
 <div class="menu-item"><a href="https://hpc.uicstat.com:8443/">Code-Hub</a></div>
 <div class="menu-category">Maintenance Group</div>
-<div class="menu-item"><a href="recruit.html">Join&nbsp;us</a></div>
+<div class="menu-item"><a href="recruit.html">Join&nbsp;Us</a></div>
 </td>
 <td id="layout-content">
 <div id="toptitle">
@@ -117,9 +117,9 @@ $ vim run.slurm      # vim is a editor, you can use others
 #SBATCH -t 5:00                      # Maximum runtime is 5 mins
 #SBATCH -o test.out                  # Save the screen's output to test.out in the current folder
 
-source environment/MATLAB            ## activate the environment variable
+moduel load computing/MATLAB/2021b            ## activate the environment variable
 
-$matlab -nodesktop -nosplash -nodisplay -r "file_name, but without `.m`"
+proxychains4 matlab -nodesktop -nosplash -nodisplay -r "file_name, but without `.m`"
                                      ## run the `.m` program
 </pre></div></div>
 <p>The first line of the above script, which specifies the script' s interpreter as bash. You must write this line every time when you write a script. After that, several lines beginning with # indicate the detailed settings of your SLURM job task: the task name is &ldquo;test&rdquo;, and it is submitted to the Cpu-Compute-1 partition, applies for 1 core of 1 node, limits the maximum task running time to five minutes, and finally saves standard output and error in the file test.out in current folder. The command source helps you to activate software's environment variables so that you can use proper software to run your program. In the above example Matlab is activated, and you can also activate Anaconda or CUDA through the following commands:</p>
@@ -196,7 +196,7 @@ speek -e [JOBID] # the error log will be monitored continuously
 <iframe width="50%" height="500px" src="//player.bilibili.com/player.html?aid=80681065&bvid=BV1ZJ411W71E&cid=138078132&page=1" scrolling="no" border="0" frameborder="no" framespacing="10" allowfullscreen="true"> </iframe>
 <div id="footer">
 <div id="footer-text">
-Page generated 2022-03-06 14:49:29 CST, by USBC Maintenance Group
+Page generated 2022-03-06 15:01:23 CST, by USBC Maintenance Group
 </div>
 </div>
 </td>

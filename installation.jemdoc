@@ -15,7 +15,7 @@ Conda can create a virtual python environment, and it easily install packages. T
 {Create local Python Environment with Conda}{shell}
 
 # activate anaconda PATH
-source ~/environment/anaconda-5.3.1
+module load computing/conda/5.3.1
 
 # using conda 
 proxychains4 conda create -name=DeepLearning python=3.7
@@ -44,7 +44,7 @@ Conda can create a virtual python environment, and it easily install packages. T
 ~~~
 {Create local R Environment with Conda}{shell}
 # activate anaconda PATH
-source ~/environment/anaconda-5.3.1
+module load computing/conda/5.3.1
 # using conda
 proxychains4 conda create -n=r4-base
 source activate r4-base
@@ -86,7 +86,7 @@ install.packages("{package_name}", repos="https://mirrors.bfsu.edu.cn/CRAN/")
 {Create local Julia Environment with Conda}{shell}
 
 # activate anaconda PATH
-source ~/environment/anaconda-5.3.1
+module load computing/conda/5.3.1
 # using conda
 proxychains4 conda create -name=julia_env julia
 ~~~

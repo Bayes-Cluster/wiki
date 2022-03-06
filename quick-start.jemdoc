@@ -112,9 +112,9 @@ After entering the empty file, you can start to write the script and press + Shi
 #SBATCH -t 5:00                      # Maximum runtime is 5 mins
 #SBATCH -o test.out                  # Save the screen's output to test.out in the current folder
 
-source environment/MATLAB            ## activate the environment variable
+moduel load computing/MATLAB/2021b            ## activate the environment variable
 
-$matlab -nodesktop -nosplash -nodisplay -r "file_name, but without `.m`"                  
+proxychains4 matlab -nodesktop -nosplash -nodisplay -r "file_name, but without `.m`"                  
                                      ## run the `.m` program
 ~~~
 
