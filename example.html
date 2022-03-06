@@ -45,13 +45,13 @@
 #SBATCH --cpus-per-task=4     # allocate 4 cpu cores
 #SBATCH -t 1-00:00:00         # runtime: 1 day
 
-source /Storage2030005000/home/user_name/environment/MATLAB-R2018a # activate the MATLAB-R2018a/MATLAB-R2020b PATH
+module load computing/MATLAB/2021b # activate the MATLAB-R2018a/MATLAB-R2020b PATH
 
 # use MATLAB to run the "Test.m" file
-$matlab -nodesktop -nosplash -nodisplay -r "Test"
+proxychains4 matlab -nodesktop -nosplash -nodisplay -r "Test"
 </pre></div></div>
-<p><tt>matlab -nodesktop -nosplash -nodisplay</tt> means disable the MATLAB GUI and welcome page, <tt>-r</tt> means excecute the MATLAB command. The file name is &ldquo;Test.m&rdquo;, however, in the script, we need to remove the &ldquo;.m&rdquo;</p>
-<p><tt>Attention: CPU Node 1 (Compute2030005000) CANNOT run the MATLAB code with symbolic variables, please submit your task to other nodes</tt></p>
+<p>Since the MATLAB is authenticated via the ITSC MATLAB License Server, <tt>proxychains4</tt> is needed before we run the MATLAB; <tt>matlab -nodesktop -nosplash -nodisplay</tt> means disable the MATLAB GUI and welcome page, <tt>-r</tt> means excecute the MATLAB command. The file name is &ldquo;Test.m&rdquo;, however, in the script, we need to remove the &ldquo;.m&rdquo;</p>
+<p><tt>Attention: the node: Compute2030005000 CANNOT run the MATLAB code with symbolic variables, please submit your task to other nodes</tt></p>
 <h2>For GPU user</h2>
 <div class="codeblock">
 <div class="blocktitle">GPU job script</div>
@@ -63,14 +63,12 @@ $matlab -nodesktop -nosplash -nodisplay -r "Test"
 #SBATCH --gres=gpu:1          # allocate 1 graphic card
 #SBATCH -t 1-00:00:00         # runtime: 1 day
 
-source /Storage2030005000/home/user_name/environment/CUDA           # activate CUDA PATH
-source /Storage2030005000/home/user_name/environment/anaconda-5.3.1 # activate anaconda PATH
-source activate DeepLearning # activate the conda environment called DeepLearning
+compiler/cuda/10.2           # activate CUDA PATH
 
-python gpu_task.py            # run the python script
+nvcc --arch=sm_60 code.cu -o output
 </pre></div></div>
 <h2>For R user</h2>
-<p>It is easy for run the <tt>R</tt> script with SLURM, here is an example, assumes that we want to run <tt>job.R</tt>, with conda-based R environment:</p>
+<p>It is easy for you run the <tt>R</tt> script with SLURM, here is an example, assumes that we want to run <tt>job.R</tt>, with conda-based R environment:</p>
 <div class="codeblock">
 <div class="blocktitle">R job script</div>
 <div class="blockcontent"><pre>
@@ -81,17 +79,34 @@ python gpu_task.py            # run the python script
 #SBATCH --gres=gpu:1          # allocate 1 graphic card
 #SBATCH -t 1-00:00:00         # runtime: 1 day
 
-source /Storage2030005000/home/user_name/environment/anaconda-5.3.1
+module load computing/conda/5.3.1
 source activate environment_name
 
 Rscript --vanilla job.R
+</pre></div></div>
+<h2>For Python User</h2>
+<p>It is easy for you to run the <tt>Python</tt> Script with SLURM, here is an example, assumes that we want to run <tt>job.py</tt>, with conda-based Python environment:</p>
+<div class="codeblock">
+<div class="blocktitle">R job script</div>
+<div class="blockcontent"><pre>
+#!/bin/bash
+#SBATCH -J R-job              # The job's name R-job
+#SBATCH --cpus-per-task=8     # allocate 8 cpu cores
+#SBATCH -p CPU-Compute-1      # submit the job to CPU partition
+#SBATCH --gres=gpu:1          # allocate 1 graphic card
+#SBATCH -t 1-00:00:00         # runtime: 1 day
+
+module load computing/conda/5.3.1
+source activate environment_name
+
+python job.py
 </pre></div></div>
 <h2>For others</h2>
 <p>You can also use the script generator we provide to generate a runable script, <tt>HOWEVER, the generator is in testing</tt>, this means it may generate a un-runable script!</p>
 <iframe width="800" height="500" src="https://uicstat.com/Slurm-Script-Generator/" frameborder="0" allowfullscreen></iframe>
 <div id="footer">
 <div id="footer-text">
-Page generated 2021-10-27 09:24:15 CST, by USBC Maintenance Group
+Page generated 2022-03-06 14:48:59 CST, by USBC Maintenance Group
 </div>
 </div>
 </td>
