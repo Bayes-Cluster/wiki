@@ -63,7 +63,7 @@ proxychains4 matlab -nodesktop -nosplash -nodisplay -r "Test"
 #SBATCH --gres=gpu:1          # allocate 1 graphic card
 #SBATCH -t 1-00:00:00         # runtime: 1 day
 
-compiler/cuda/10.2           # activate CUDA PATH
+module load compiler/cuda/10.2           # activate CUDA PATH
 
 nvcc --arch=sm_60 code.cu -o output
 </pre></div></div>
@@ -106,7 +106,7 @@ python job.py
 <iframe width="800" height="500" src="https://uicstat.com/Slurm-Script-Generator/" frameborder="0" allowfullscreen></iframe>
 <div id="footer">
 <div id="footer-text">
-Page generated 2022-03-06 14:48:59 CST, by USBC Maintenance Group
+Page generated 2022-03-06 14:49:29 CST, by USBC Maintenance Group
 </div>
 </div>
 </td>
