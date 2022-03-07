@@ -2,14 +2,16 @@ Home
     About            [index.html]
     Term of Service  [term-of-service.html]
     Quick Start      [quick-start.html]
-    Log In           [login.html]
     Web Portal	     [web-portal.html]
+Features    
+    Log In           [login.html]
+    Environment      [env-setting.html]
     Interactive Task [interactive-task.html]
     Batch Task 	     [batch-task.html]
     Job Example      [example.html]
     Installation     [installation.html]
     File Transfer    [transferfile.html]
 Quick Link
-	Code-Hub		 [https://hpc.uicstat.com:8443/]
+	Code-Hub		 [https://hpc.uicstat.com/codehub]
 Maintenance Group
 	Join Us			 [recruit.html]
